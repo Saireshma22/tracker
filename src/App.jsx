@@ -40,30 +40,39 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4">
-      <h1 className="text-2xl font-bold mb-4">Employee Task Tracker</h1>
-      <Dashboard employees={employees} />
-      <FilterBar filter={filter} setFilter={setFilter} />
-      <div className="grid md:grid-cols-2 gap-4">
-        <div>
-          <TaskForm employees={employees} addTask={addTask} />
-          <div className="mt-4 space-y-3">
-            {employees.map(emp => (
-              <EmployeeCard
-                key={emp.id}
-                employee={emp}
-                filter={filter}
-                updateTaskStatus={updateTaskStatus}
-              />
-            ))}
-          </div>
-        </div>
-        {/* Right column could show expanded dashboard or analytics */}
-        <div>
-          {/* Optional extra components */}
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100">
+  <div className="max-w-6xl mx-auto py-8 px-4">
+    {/* Header */}
+    <div className="mb-6 text-center">
+      <h1 className="text-4xl font-bold text-gray-800 drop-shadow-sm">
+        Employee Task Tracker
+      </h1>
+      <p className="text-gray-600 mt-1">Manage tasks easily & efficiently</p>
+    </div>
+
+    {/* Dashboard */}
+    <Dashboard employees={employees} />
+
+    {/* Filters */}
+    <FilterBar filter={filter} setFilter={setFilter} />
+
+    {/* Body Grid */}
+    <div className="grid md:grid-cols-2 gap-6">
+      <TaskForm employees={employees} addTask={addTask} />
+      <div className="space-y-4">
+        {employees.map(emp => (
+          <EmployeeCard
+            key={emp.id}
+            employee={emp}
+            filter={filter}
+            updateTaskStatus={updateTaskStatus}
+          />
+        ))}
       </div>
     </div>
+  </div>
+</div>
+
   );
 }
 
